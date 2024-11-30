@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Filler</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #e9f5ff; /* Light blue background */
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Headings */
+        h1 {
+            text-align: center;
+            color: #007bff; /* Bright blue color */
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #0056b3; /* Darker blue for section headings */
+            margin-bottom: 10px;
+            font-weight: 700;
+            border-bottom: 2px solid #0056b3; /* Underline effect */
+            padding-bottom: 5px;
+        }
+
+        /* Input Fields */
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="url"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-top: 5px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #007bff; /* Change border color on focus */
+            outline: none; /* Remove outline */
+        }
+
+        /* Textarea Styling */
+        textarea {
+            resize: vertical; /* Allow vertical resize only */
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #007bff; /* Blue background */
+            color: white; /* White text */
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Delete Project Button */
+        .delete-project-btn {
+            background-color: #dc3545; /* Red background */
+            margin-top: 10px; /* Align right */
+        }
+
+        .delete-project-btn:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Add Project Button */
+        #add-project-btn {
+            background-color: #28a745; /* Green background */
+            margin-top: 10px;
+        }
+
+        #add-project-btn:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fill Your Portfolio Details</h1>
+        <form id="portfolio-form" action="save_profile.php" method="POST" enctype="multipart/form-data">
+            <div class="section">
+                <h2>Personal Details</h2>
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
+                <textarea name="about" id="about" placeholder="Tell us about yourself" required></textarea>
+                <input type="text" id="number" name="number" placeholder="Phone Number" required>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <input type="text" id="linkedin" name="linkedin" placeholder="LinkedIn Profile" required>
+                <input type="text" id="github" name="github" placeholder="GitHub Profile" required>
+            </div>
+
+            <div class="section">
+                <h2>Education</h2>
+                <textarea id="education" name="education" placeholder="Education Details" required></textarea>
+            </div>
+
+            <div class="section">
+                <h2>Skills</h2>
+                <textarea id="skills" name="skills" placeholder="List your key skills (e.g., programming languages, tools)" rows="4" required></textarea>
+            </div>
+
+            <div class="section">
+                <h2>Hobbies and Interests</h2>
+                <textarea id="hobbies" name="hobbies" placeholder="Share your hobbies and interests" rows="4"></textarea>
+            </div>
+
+            <div class="section">
+                <h2>Certificates</h2>
+                <textarea id="certificates" name="certificates" placeholder="Details of Certifications" required></textarea>
+            </div>
+
+            <div class="section">
+                <h2>Internships</h2>
+                <textarea id="internships" name="internships" placeholder="Details of Internships"></textarea>
+            </div>
+
+            <div class="section">
+                <h2>Image</h2>
+                <input type="file" id="img" name="img" placeholder="Upload your image" required>
+            </div>
+
+            <div class="section" id="project-section">
+                <h2>Projects</h2>
+                <div class="project">
+                    <input type="text" placeholder="Project Name" class="project-name" required>
+                    <textarea placeholder="Project Description" class="project-description" required></textarea>
+                    <button type="button" class="delete-project-btn">Delete Project</button>
+                </div>
+            </div>
+
+            <button type="button" id="add-project-btn">Add More Projects</button>
+            <br><br>
+
+            <!-- Hidden input field to store serialized project data -->
+            <input type="hidden" id="projects-data" name="projects">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="profile_filler.js"></script>
+</body>
+</html>
